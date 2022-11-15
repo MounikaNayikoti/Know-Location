@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <title>geolocation</title>
+        <meta name="viewport" content= "width=device-width,initial-scale=1.0">
+        <style>
+            body{
+                margin:0;
+                padding:0;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                background:linear-gradient(25deg,rgb(42, 220, 233),rgb(219, 110, 194),rgb(35, 190, 149));
+            }
+            .location
+            {   
+                text-align:center;
+                background:rgb(38, 38, 37);
+                border-radius:10px;
+                border:2px solid chartreus;
+                height:auto;
+                width:450px;
+                border:2px solid white;
+            }
+            .location p{
+                
+                font-size:35px;
+                font-style:oblique;
+                color:chartreuse;
+                font-weight:25px;
+            }
+            .location button{
+                background:linear-gradient(35deg,rgb(179, 43, 224),rgb(47, 206, 224));
+                color:whitesmoke;
+                font-size: 20px;
+                font-style:italic;
+                padding:10px;
+                margin:20px;
+                font-weight:40px;
+                font-family:'Courier New', Courier, monospace;
+                border-top-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+                box-shadow: 2px 4px rgb(141, 141, 239) inset;
+                curser:pointer;
+            }
+            
+
+        </style>
+    </head>
+    <body>
+        <div class="location">
+        <p>Wanna know your location</p>
+        <button onclick="getlocation()">CLICK HERE</button>
+        <p id="demo"></p>
+        </div>
+        <script>
+            var x=document.getElementById("demo");
+            function getlocation()
+            {
+                if(navigator.geolocation)
+                {
+                    navigator.geolocation.getCurrentPosition(showPosition);
+
+                }
+                else{
+                    x.innerHTML="wrong";
+                }
+            }
+            function showPosition(position)
+            {
+                x.innerHTML="Latitude: "+position.coords.latitude + "<br> Longitude: " +position.coords.longitude;
+
+            }
+        </script>
+    </body>
+</html>
